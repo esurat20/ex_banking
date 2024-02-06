@@ -3,7 +3,10 @@ defmodule ExBanking.Application do
 
   def start(_type, _args) do
     children = [
-      {ExBanking.User, []}
+      {ExBanking.User, []},
+      {ExBanking.Currenncy, []},
+      {Registry, keys: :unique, name: Registry.UserNames},
+      {Registry, keys: :unique, name: Registry.CounterNames}
     ]
 
     opts = [
